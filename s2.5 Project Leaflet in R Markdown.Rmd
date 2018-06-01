@@ -1,0 +1,41 @@
+---
+title: "My homework Leaflet"
+author: "Philippe P."
+date: "Mai 31, 2018"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(leaflet)
+```
+
+## Cours Project : Population comparison
+
+**The date is : Mai 31, 2018**
+
+The populations is presented in millions.
+Data, 
+Presentation based on the coordinates of capitals
+
+
+
+```{r }
+data <- data.frame(name = c("China","India","EU", "USA","Indonesia"),
+                        pop = c(1415045928, 1355621800, 511805088, 328286400, 266471000),
+                        lat = c(40,29,51,39,6),
+                        lng = c(116,77,4,-77,107))
+
+popuplabel <- c(
+  "China : 1 415 Millions","India : 1 355 Millions","EU : 512 Millions", "USA : 328 Millions","Indonesia : 266 Millions" 
+)
+
+data %>%
+  leaflet() %>%
+  addTiles() %>%
+  addCircles(weight = 1, radius = sqrt(data$pop)*40) %>%
+  addMarkers(popup = popuplabel)
+```
+
+
+	
